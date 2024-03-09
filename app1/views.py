@@ -16,6 +16,8 @@ def SignupPage(request):
 
        if pass1!=pass2:
            return HttpResponse("password does not match")
+    
+           
        else:
 
          my_user=User.objects.create_user(name,email,pass1)
