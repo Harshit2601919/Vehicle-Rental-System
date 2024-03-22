@@ -22,7 +22,8 @@ class Vehicle(models.Model):
      )
 
     owner = models.ForeignKey(User,default=None,on_delete=models.CASCADE)
-    number_plate=models.CharField(max_length=100)
+    #vehicle_id=models.IntegerField(primary_key=True,blank=False,null=False)
+    number_plate = models.CharField(max_length=20, blank=True, null=True)
     distance_travelled=models.DecimalField(max_digits=10,default=0,decimal_places=0)
     images=models.ImageField(upload_to='',default="default.png",blank=False)
     mileage=models.DecimalField(max_digits=10,default=0,decimal_places=0)
@@ -31,4 +32,5 @@ class Vehicle(models.Model):
     insurance_status=models.CharField(max_length=2,default='NU',choices=INSURANCES_CHOICES)
     fuel=models.CharField(max_length=1,default='D',choices=FUEL_CHOICES)
 
-    
+    #def __str__(self):
+      #return self.number_plate

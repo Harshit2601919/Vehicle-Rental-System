@@ -18,12 +18,13 @@
       <nav>
           <ul>
               <li><a href="#">Home</a></li>
-              <li><a href="#">Cars</a></li>
+              
               <li><a href="#">About Us</a></li>
               <li><a href="#">Contact</a></li>
               <li><a href="{% url 'logout' %}">Logout</a></li>
-              <li><a href="#">Book Your Car</a></li>
-              <li><a href="#">Rent Your Car</a></li>
+              <li><a href=" {% url 'book' %}">Book Your Car</a></li>
+              
+              <li><a href="{% url 'rent' %}">Rent Vehicle</a></li>
           </ul>
       </nav>
   </header>
@@ -50,6 +51,8 @@
         <p>24/7 customer support available.</p>
     </div>
 </section>
+<section class="name">
+  
 
 <footer>
     <p>&copy; 2024 Car Rental System. All rights reserved.</p>
@@ -64,6 +67,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 
 /* Body Styles */
 body {
