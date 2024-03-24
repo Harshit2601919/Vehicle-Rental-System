@@ -50,11 +50,7 @@
             <label for="cost">Cost:</label>
             <input type="number" id="cost" name="cost"><br><br>
             
-            <label for="available_status">Availability:</label>
-            <select id="available_status" name="available_status">
-                <option value="NB">Not Booked</option>
-                <option value="B">Booked</option>
-            </select><br><br>
+           
             
             <label for="insurance_status">Insurance Status:</label>
             <select id="insurance_status" name="insurance_status">
@@ -71,7 +67,9 @@
             <button type="submit">Add Vehicle</button>
         </form>
     </div>
-    
+     <div>
+        <a href="{% url 'rent_history' %}" class="btn btn-primary">View Rent History</a>
+    </div>
     <!-- Displaying existing vehicles -->
     
 </body>
@@ -94,26 +92,21 @@ body {
 
 /* Header Styles */
 header {
-  background-color: #333;
+  background-color: #007bff;
   color: #fff;
   padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
-
-header h1 {
-  margin: 0;
-  font-size: 24px;
-}
-
-/* Navigation Styles */
 nav ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
-
 nav ul li {
   display: inline;
-  margin-left: 20px;
+  margin-right: 10px;
 }
-
 nav ul li a {
   color: #fff;
   text-decoration: none;

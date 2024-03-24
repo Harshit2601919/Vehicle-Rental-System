@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent History</title>
+</head>
+<body>
+    <h1>Rent History</h1>
+    <div class="rent-history-container">
+        {% if rent %}
+            <ul>
+                {% for r in rent%}
+                    <li>
+                        <h3>{{ r.number_plate }}</h3>
+                        <h3>Cost:{{r.cost}}</h3>
+                        
+                        <p><strong>Status:</strong> {{ r.approval_status }}</p>
+                        <!-- Add more rent details as needed -->
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No rent history found.</p>
+        {% endif %}
+    </div>
+    
+    <style>
+        /* styles.css */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #333; /* Dark gray text color */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styles */
+.rent-history-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+/* Heading styles */
+h1 {
+    text-align: center;
+    color: #007bff; /* Blue heading color */
+}
+
+/* List styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* List item styles */
+li {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f1f1f1; /* Light gray background for list items */
+    border-radius: 5px;
+}
+
+/* Vehicle number plate styles */
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Status styles */
+p strong {
+    font-weight: bold;
+}
+
+/* No rent history message styles */
+.no-history-message {
+    text-align: center;
+    color: #dc3545; /* Red text color */
+    font-style: italic;
+}
+
+    </style>
+</body>
+</html>
