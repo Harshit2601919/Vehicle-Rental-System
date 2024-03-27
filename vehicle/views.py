@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Vehicle
-
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -14,6 +14,7 @@ def Rentvehicle(request):
     user = request.user
     if request.method == 'POST':
         # Ensure 'owner' key exists in the POST data
+            name=request.POST.get('name')
             number_plate = request.POST.get('number_plate')
             distance_travelled = request.POST.get('distance_travelled')
             images = request.FILES.get('images')
@@ -24,6 +25,7 @@ def Rentvehicle(request):
 
             new_vehicle = Vehicle(
                 owner=user,
+                name=name,
                 number_plate=number_plate,
                 distance_travelled=distance_travelled,
                 images=images,
@@ -39,16 +41,27 @@ def Rentvehicle(request):
     return render(request, 'rent.html')
 
 
-
+@login_required
 def Bookvehicle(request):
-    approved_vehicles = Vehicle.objects.approved()
+    # views.py
+
+    
+
+
+
+    approved_vehicles = Vehicle.objects.filter(approval_status='approved')
     return render(request, 'book.html', {'approved_vehicles': approved_vehicles})
 
 
-
+@login_required
 def rent_history(request):
      user = request.user
      print(user)
      rent=Vehicle.objects.filter(owner=user)
      
      return render (request,'rent_history.html',{'rent':rent})
+
+@login_required
+def rent_page_view(request):
+    
+    return render(request, 'rent.html')

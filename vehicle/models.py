@@ -26,6 +26,7 @@ class Vehicle(models.Model):
 
     owner = models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     approval_status = models.CharField(max_length=20, default='pending')
+    name = models.CharField(max_length=100, null=True, blank=True)
     #vehicle_id=models.IntegerField(primary_key=True,blank=False,null=False)
     number_plate = models.CharField(max_length=20, blank=True, null=True)
     distance_travelled=models.DecimalField(max_digits=10,default=0,decimal_places=0)

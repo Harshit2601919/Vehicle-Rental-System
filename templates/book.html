@@ -66,11 +66,42 @@
             background-color: #0056b3;
             border-color: #0056b3;
         }
+        /* Search bar styles */
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-form input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .search-form input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .search-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Car Rental System</h1>
+        <!-- Search bar -->
+        <form method="GET">
+            <input type="text" name="search" placeholder="Search by vehicle name">
+            <button type="submit">Search</button>
+        </form>
+        <!-- Navigation -->
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
@@ -82,8 +113,9 @@
             </ul>
         </nav>
     </header>
-    {%  block content %}
 
+    <!-- Content block -->
+    {% block content %}
     <div class="container">
         <h2 class="text-center">Vehicle</h2>
         <div class="vehicle-container">
@@ -92,6 +124,7 @@
                     <h3>{{ vehicle.number_plate }}</h3>
                     <p><strong>Owner:</strong> {{ vehicle.owner.username }}</p>
                     <p><strong>Cost:</strong> ${{ vehicle.cost }}</p>
+                    <p><strong>Name:</strong> {{ vehicle.name }}</p>
                     <p><strong>Status:</strong> {% if vehicle.available %}Available{% else %}Not Available{% endif %}</p>
                     <img src="{{ vehicle.images.url }}"  class="card-img-top" alt="{{ vehicle.number_plate }}" >
                     <a href="#" class="btn btn-primary">Add</a>
@@ -100,7 +133,7 @@
         </div>
     </div>
     {% endblock %}
-    
-    >
+    <!-- End of content block -->
+
 </body>
 </html>
