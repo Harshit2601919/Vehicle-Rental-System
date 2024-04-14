@@ -23,8 +23,7 @@ def SignupPage(request):
          my_user=User.objects.create_user(name,email,pass1)
          my_user.save()
          return  redirect('/login')
-      
-
+    
      
    return render (request,'signup.html')
 
@@ -47,5 +46,4 @@ def LoginPage(request):
 def  LogoutPage(request):
     logout(request)
     return redirect('login')
-    pass
 
