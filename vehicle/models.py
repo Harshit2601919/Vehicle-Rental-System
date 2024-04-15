@@ -58,8 +58,7 @@ class Order(models.Model):
     startRent = models.DateField(auto_now_add=False, null=True)
     endRent = models.DateField(auto_now_add=False, null=True)
     orderDate = models.DateTimeField(auto_now_add=True, null=True)
-    pickUp = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)
-    fullFuel = models.BooleanField(blank=True, null=True, default=False)
+    pickUp = models.ForeignKey(Location, on_delete=models.CASCADE, null=True) 
     insurance = models.BooleanField(blank=True, null=True, default=False)
     payed = models.BooleanField(null=True, default=False)
 
