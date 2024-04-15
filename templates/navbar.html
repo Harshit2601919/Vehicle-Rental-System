@@ -1,0 +1,35 @@
+<style>
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    nav ul li {
+        display: inline;
+        margin-right: 10px;
+    }
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+
+<header>
+    <h1>Car Rental System</h1>
+    <!-- Search bar -->
+    <form method="GET" class="search-container">
+        <input type="text" name="search" placeholder="Search by vehicle name" class="form-control">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <!-- Navigation -->
+    <nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Book Your Car</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'rent' %}">Add Vehicle</a></li>
+        </ul>
+    </nav>
+</header>

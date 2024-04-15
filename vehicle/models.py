@@ -37,7 +37,7 @@ class Vehicle(models.Model):
     objects = VehicleManager()
 
     def __str__(self):
-        return self.number_plate
+        return str(self.number_plate)
 
 
 

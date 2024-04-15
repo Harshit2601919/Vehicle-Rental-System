@@ -1,0 +1,19 @@
+{% for vehicle in vehicles %}
+    <div class="col-md-6 mb-3">
+    <div class="card h-100 shadow-sm position-relative overflow-hidden rounded-lg">
+        <img src="{{ vehicle.images.url }}" class="card-img-top img-fluid" alt="{{ vehicle.number_plate }}">
+        <div class="card-body d-flex flex-column justify-content-between">
+        <h5 class="card-title">{{ vehicle.name }}</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Number Plate:</strong> {{ vehicle.number_plate }}</li>
+            <li class="list-group-item"><strong>Distance Travelled:</strong> {{ vehicle.distance_travelled }}</li>
+            <li class="list-group-item"><strong>Mileage:</strong> {{ vehicle.mileage }}</li>
+            <li class="list-group-item"><strong>Cost:</strong> ${{ vehicle.cost }}</li>
+            <li class="list-group-item"><strong>Available Status:</strong> {{ vehicle.get_available_status_display }}</li>
+            <li class="list-group-item"><strong>Insurance Status:</strong> {{ vehicle.get_insurance_status_display }}</li>
+            <li class="list-group-item"><strong>Fuel Type:</strong> {{ vehicle.get_fuel_display }}</li>
+        </ul>
+        </div>
+    </div>
+    </div>
+{% endfor %}
