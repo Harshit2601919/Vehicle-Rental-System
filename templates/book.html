@@ -18,20 +18,7 @@
             padding: 20px;
             text-align: center;
             margin-bottom: 20px;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
+        } 
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -94,25 +81,8 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Car Rental System</h1>
-        <!-- Search bar -->
-        <form method="GET">
-            <input type="text" name="search" placeholder="Search by vehicle name">
-            <button type="submit">Search</button>
-        </form>
-        <!-- Navigation -->
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                <li><a href="#">Book Your Car</a></li>
-                <li><a href="{% url 'rent' %}">Rent Vehicle</a></li>
-            </ul>
-        </nav>
-    </header>
+    {% comment %} this will include navbar template {% endcomment %}
+    {% include "navbar.html" %}
 
     <!-- Content block -->
     {% block content %}
