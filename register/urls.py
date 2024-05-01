@@ -16,21 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from app1 import views
+from app1 import views as v1
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.SignupPage,name='signup'),
-    path('login/',views.LoginPage,name='login'),
-    path('home/',views.HomePage,name='home')  ,
-    path('logout/',views.LogoutPage,name='logout'),
+    path('',v1.SignupPage,name='signup'),
+    path('login/',v1.LoginPage,name='login'),
+    path('home/',v1.HomePage,name='home')  ,
+    path('about/', v1.aboutpage, name='about'),
+    path('logout/',v1.LogoutPage,name='logout'),
     
     path('', include('vehicle.urls')),
 ]
-    
-     
-   
 
- 
-   
+

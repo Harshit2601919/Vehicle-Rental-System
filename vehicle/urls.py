@@ -8,5 +8,4 @@ urlpatterns = [
     path('rent_history/',views.rent_history,name='rent_history'),
     path('rent_html/', views.rent_page_view, name='rent_page'),
     
-    
 ]

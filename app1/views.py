@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from vehicle.models import Vehicle, VehicleManager
-@login_required(login_url='login')
+# @login_required(login_url='login')
 # Create your views here. 
 
 def HomePage(request):
@@ -51,10 +51,11 @@ def LoginPage(request):
             return redirect('login')
            # return HttpResponse("incorrect details")
 
-
     return render(request,'login.html')
 
 def  LogoutPage(request):
     logout(request)
     return redirect('login')
 
+def aboutpage(request):
+    return render(request, 'about.html')

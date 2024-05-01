@@ -9,29 +9,17 @@ class Vehicle(models.Model):
     AVAILABE_CHOICES = (
         ('B', 'Booked'),
         ('NB', 'Not Booked'),
-    )
-
-    INSURANCES_CHOICES = (
-        ('U', 'Updated'),
-        ('NU', 'No Update'),
-    )
-
-    FUEL_CHOICES = (
-        ('P', 'Petrol'),
-        ('D', 'Diesel'),
-    )
+    )  
 
     owner = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     approval_status = models.CharField(max_length=20, default='pending')
     name = models.CharField(max_length=100, null=True, blank=True)
     number_plate = models.CharField(max_length=20, blank=True, null=True)
     distance_travelled = models.DecimalField(max_digits=10, default=0, decimal_places=0)
-    images = models.ImageField(upload_to='images/', default="default.jpg", blank=False)
+    images = models.ImageField(upload_to='images/', default="images/default.webp", blank=True, null = True)
     mileage = models.DecimalField(max_digits=10, default=0, decimal_places=0)
     cost = models.IntegerField(null=True, blank=True)
-    available_status = models.CharField(max_length=2, default='NB', choices=AVAILABE_CHOICES)
-    insurance_status = models.CharField(max_length=2, default='NU', choices=INSURANCES_CHOICES)
-    fuel = models.CharField(max_length=1, default='D', choices=FUEL_CHOICES)
+    available_status = models.CharField(max_length=2, default='NB', choices=AVAILABE_CHOICES) 
     customer = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name='vehicles') 
 
     objects = VehicleManager()

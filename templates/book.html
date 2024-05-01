@@ -84,26 +84,32 @@
     {% comment %} this will include navbar template {% endcomment %}
     {% include "navbar.html" %}
 
-    <!-- Content block -->
-    {% block content %}
-    <div class="container">
-        <h2 class="text-center">Vehicle</h2>
-        <div class="vehicle-container">
-            {% for vehicle in approved_vehicles %}
-                <div class="vehicle-card">
-                    <h3>{{ vehicle.number_plate }}</h3>
-                    <p><strong>Owner:</strong> {{ vehicle.owner.username }}</p>
-                    <p><strong>Cost:</strong> ${{ vehicle.cost }}</p>
-                    <p><strong>Name:</strong> {{ vehicle.name }}</p>
-                    <p><strong>Status:</strong> {% if vehicle.available %}Available{% else %}Not Available{% endif %}</p>
-                    <img src="{{ vehicle.images.url }}"  class="card-img-top" alt="{{ vehicle.number_plate }}" >
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            {% endfor %}
+    
+    {% if user.is_authenticated %}
+        <!-- Content block -->
+        {% block content %}
+        <div class="container">
+            <h2 class="text-center">Vehicle</h2>
+            <div class="vehicle-container">
+                {% for vehicle in approved_vehicles %}
+                    <div class="vehicle-card">
+                        <h3>{{ vehicle.number_plate }}</h3>
+                        <p><strong>Owner:</strong> {{ vehicle.owner.username }}</p>
+                        <p><strong>Cost:</strong> ${{ vehicle.cost }}</p>
+                        <p><strong>Name:</strong> {{ vehicle.name }}</p>
+                        <p><strong>Status:</strong> {% if vehicle.available %}Available{% else %}Not Available{% endif %}</p>
+                        <img src="{{ vehicle.images.url }}"  class="card-img-top" alt="{{ vehicle.number_plate }}" >
+                        <a href="#" class="btn btn-primary">Add</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-    {% endblock %}
-    <!-- End of content block -->
+        {% endblock %}
+        <!-- End of content block -->
+    {% else %}
+        Please log in.
+    {% endif %}
+
 
 </body>
 </html>

@@ -11,20 +11,7 @@
     <title>Home Page</title>
     <style>
         /* Custom CSS styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        
 
         nav ul {
             list-style-type: none;
@@ -104,49 +91,43 @@
 <body>
     {% comment %} this will include navbar template {% endcomment %}
     {% include "navbar.html" %}
+    {% if user.is_authenticated %} 
+        <div class="add-vehicle">
+            <h2>Add New Vehicle</h2>
+            <form action="{% url 'rent' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+ 
+                <label for="number_plate">Number Plate:</label>
+                <input type="text" id="number_plate" name="number_plate">
 
-    <div class="add-vehicle">
-        <h2>Add New Vehicle</h2>
-        <form action="#" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+                <label for="distance_travelled">Distance Travelled:</label>
+                <input type="number" id="distance_travelled" name="distance_travelled">
 
-            <label for="owner">Owner:</label>
-            <input type="text" id="owner" name="owner" required>
+                <label for="images">Upload Image:</label>
+                <input type="file" id="images" name="images" accept="image/*">
 
-            <label for="number_plate">Number Plate:</label>
-            <input type="text" id="number_plate" name="number_plate">
+                <label for="mileage">Mileage:</label>
+                <input type="number" id="mileage" name="mileage">
 
-            <label for="distance_travelled">Distance Travelled:</label>
-            <input type="number" id="distance_travelled" name="distance_travelled">
+                <label for="cost">Cost:</label>
+                <input type="number" id="cost" name="cost"> 
 
-            <label for="images">Upload Image:</label>
-            <input type="file" id="images" name="images" accept="image/*">
+                <button type="submit">Add Vehicle</button>
+            </form>
+        </div>
+        <div>
+            <a href="{% url 'rent_history' %}" class="btn btn-primary">View Rent History</a>
+        </div>
 
-            <label for="mileage">Mileage:</label>
-            <input type="number" id="mileage" name="mileage">
+    {% else %}
 
-            <label for="cost">Cost:</label>
-            <input type="number" id="cost" name="cost">
+        <h2>
+            Please log in.
+        </h2>
+    {% endif %}
 
-            <label for="insurance_status">Insurance Status:</label>
-            <select id="insurance_status" name="insurance_status">
-                <option value="NU">No Update</option>
-                <option value="U">Updated</option>
-            </select>
 
-            <label for="fuel">Fuel Type:</label>
-            <select id="fuel" name="fuel">
-                <option value="D">Diesel</option>
-                <option value="P">Petrol</option>
-            </select>
-
-            <button type="submit">Add Vehicle</button>
-        </form>
-    </div>
-    <div>
-        <a href="{% url 'rent_history' %}" class="btn btn-primary">View Rent History</a>
-    </div>
 </body>
 </html>
